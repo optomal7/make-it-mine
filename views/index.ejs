@@ -6,6 +6,14 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Welcome to <%= title %> Use this lightweight tool to find your next domain today.</p>
+
+    <form action="/domain" method="get">
+      <span>
+        <input type="text" name="domainName" placeholder="example.com">
+        <input type="submit" value="Can it be mine?">
+      </span>
+
+    </form>
   </body>
 </html>

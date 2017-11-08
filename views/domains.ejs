@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Almost Yours!</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <p> <%= holder.domainName %> is <% if(!holder.available) { %> not <% } %>available</p>
+
+    <% if(holder.options !== undefined) { %>
+      <p>we got options</p>
+
+      <ul>
+        <% for (let i = 0; i < holder.options.length; i++) { %>
+          <li><%= holder.options[i].domain %> </li>
+        <% } %>
+      </ul>
+    <%} %>
+
+  </body>
+</html>
