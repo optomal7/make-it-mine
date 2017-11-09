@@ -22,7 +22,16 @@ router.get('/', function(req, res, next) {
         client.get('domains/suggest?query=' + holder.domainName + '&&&&&&&&')
           .then(function(suggestions){
             holder.options = suggestions.body
-            console.log(suggestions.body[0].domain)
+            for (let i = 0; i < suggestions.body.length; i++) {
+              //console.log(holder.options[i].length)
+              //console.log(holder.domainName.length);
+              holder.options[i].lengDiff = Math.abs(holder.options[i].domain.length - holder.domainName.length)
+            }
+
+            holder.options.sort(function (a, b) {
+              return a.lengDiff - b.lengDiff
+            })
+            console.log(holder.options)
             res.render('domains', {holder});
           })
       }
