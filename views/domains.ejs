@@ -3,18 +3,50 @@
   <head>
     <title>Almost Yours!</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="/javascripts/script.js"></script>
   </head>
   <body>
     <p> <%= holder.domainName %> is <% if(!holder.available) { %> not <% } %>available</p>
 
-    <% if(holder.options !== undefined) { %>
-      <p>we got options</p>
+    <% if(holder.options !== undefined && holder.options.length > 0 ) { %>
+      <span>
+        <p>but we got options! Sort by:
+          <button type="button" id="length-button">Length Similar</button>
+          <button type="button" id="edit-button">Word Similar</button>
+          <button type="button" id="magic-button">Magic</button>
+        </p>
+      </span>
 
-      <ul>
-        <% for (let i = 0; i < holder.options.length; i++) { %>
-          <li><%= holder.options[i].domain %> </li>
-        <% } %>
-      </ul>
+      <div class="row">
+
+        <div class="col">
+          <ul id="length">
+            <% for (let i = 0; i < holder.options.length; i++) { %>
+              <li><%= holder.lengSort[i].domain %> </li>
+            <% } %>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul id="magic">
+            <% for (let i = 0; i < holder.options.length; i++) { %>
+              <li><%= holder.originalSort[i].domain %> </li>
+            <% } %>
+          </ul>
+        </div>
+
+        <div class="col">
+          <ul id="edit">
+            <% for (let i = 0; i < holder.options.length; i++) { %>
+              <li><%= holder.editDistSort[i].domain %> </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+
+
     <%} %>
 
   </body>
